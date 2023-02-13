@@ -12,7 +12,7 @@ import willy.ui.Ui;
 public class Parser {
 
     private TaskList tList;
-    private Ui ui;
+    private static Ui ui;
     private boolean isExit;
 
     /**
@@ -38,14 +38,13 @@ public class Parser {
      */
     public static String listCommand(TaskList tList) {
         int taskCount = tList.getTaskCount();
-        String str = "";
         if (taskCount == 0) {
-            str = "You have 0 tasks in your list";
-            return str;
+            // return ui.emptyTaskListMessage();
         } else {
-            str = String.format("You have %d tasks in your list \n%s", taskCount, tList.toString());
-            return str;
+            // return ui.nonEmptyTaskListMessage(taskCount,tList.toString());
+            
         }
+        return "test";
     }
 
     /**
@@ -70,9 +69,8 @@ public class Parser {
      * Runs the exit command which prints the bye msg and stops the program
      */
     public String exitCommand() {
-        String str = "Bye. Hope to see you again soon!";
         isExit = true;
-        return str;
+        return ui.exitMessage();
     }
 
     /**

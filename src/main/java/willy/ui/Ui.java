@@ -10,8 +10,10 @@ import java.io.InputStreamReader;
 public class Ui {
 
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
     /**
      * To get and return the string collected by the BufferedReader
+     * 
      * @return String
      * @throws IOException
      */
@@ -29,6 +31,7 @@ public class Ui {
 
     /**
      * Prints out the error msg
+     * 
      * @param e
      */
     public void showError(String e) {
@@ -42,4 +45,24 @@ public class Ui {
         System.out.println("\t____________________________________________________________");
     }
 
+    /**
+     * Prints out exit msg
+     */
+    public String exitMessage() {
+        return "Bye. Hope to see you again soon!";
+    }
+
+    /**
+     * Prints out exit msg
+     */
+    public String emptyTaskListMessage() {
+        return "You have 0 tasks in your list";
+    }
+
+    /**
+     * Prints out exit msg
+     */
+    public String nonEmptyTaskListMessage(int taskCount, String taskListMessage) {
+        return String.format("You have %d tasks in your list \n%s", taskCount, taskListMessage);
+    }
 }
