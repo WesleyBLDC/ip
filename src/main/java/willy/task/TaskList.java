@@ -84,7 +84,6 @@ public class TaskList {
         tasks.remove(index);
         storage.save(this);
         return "Successfully deleted this task";
-        // System.out.println("Successfully deleted this task"); // chaneg this later
     }
 
     /**
@@ -96,12 +95,8 @@ public class TaskList {
         Todo entry = new Todo(details);
         tasks.add(entry);
         storage.save(this);
-        // System.out.println(entry.toString());
         String str = entry.toString();
         return str;
-        // System.out.format("Now you have %d things in your list%n",
-        // this.getTaskCount());
-        // System.out.println("Successfully added a todo"); // chaneg
     }
 
     /**
@@ -114,10 +109,8 @@ public class TaskList {
         Deadline entry = new Deadline(details, date);
         tasks.add(entry);
         storage.save(this);
-        // System.out.println(entry.toString());
         String str = entry.toString();
         return str;
-        // System.out.println("Successfully added a deadline"); // chaneg this later
     }
 
     /**
@@ -130,11 +123,8 @@ public class TaskList {
         Deadline entry = new Deadline(details, dateArray);
         tasks.add(entry);
         storage.save(this);
-        // System.out.println(entry.toString());
         String str = entry.toString();
         return str;
-        // System.out.println("Successfully added a deadline with a date"); // chaneg
-        // this later
     }
 
     /**
@@ -148,10 +138,8 @@ public class TaskList {
         Event entry = new Event(details, dateFrom, dateTo);
         tasks.add(entry);
         storage.save(this);
-        // System.out.println(entry.toString());
         String str = entry.toString();
         return str;
-        // System.out.println("Successfully added an event"); // chaneg this later
     }
 
     /**
@@ -160,8 +148,6 @@ public class TaskList {
      * @param keyword
      */
     public String findTasks(String keyword) {
-        // System.out.println("Here are the matching tasks in your list");
-
         String str = "Here are the matching tasks in your list\n";
         String msg = "";
         int counter = 1;
@@ -180,7 +166,6 @@ public class TaskList {
             }
 
         }
-        // System.out.println(str);
         return str;
     }
 

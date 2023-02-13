@@ -40,12 +40,9 @@ public class Parser {
         int taskCount = tList.getTaskCount();
         String str = "";
         if (taskCount == 0) {
-            // System.out.println("You have 0 tasks in your list");
             str = "You have 0 tasks in your list";
             return str;
         } else {
-            // System.out.format("You have %d tasks in your list \n", taskCount);
-            // System.out.println(tList.toString());
             str = String.format("You have %d tasks in your list \n%s", taskCount, tList.toString());
             return str;
         }
@@ -73,7 +70,6 @@ public class Parser {
      * Runs the exit command which prints the bye msg and stops the program
      */
     public String exitCommand() {
-        // System.out.println("Bye. Hope to see you again soon!");
         String str = "Bye. Hope to see you again soon!";
         isExit = true;
         return str;

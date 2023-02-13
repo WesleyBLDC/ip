@@ -166,7 +166,5 @@ class WillyApp extends Application {
         Parser p = new Parser(this.taskList, this.ui);
         String response = p.parseCommand(input);
         return response;
-
-        // command.execute(taskList, storage, ui);
     }
 }
