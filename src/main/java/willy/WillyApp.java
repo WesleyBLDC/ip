@@ -1,7 +1,6 @@
 package willy;
 
 import javafx.application.Application;
-import willy.exception.WillyException;
 import willy.parser.Parser;
 import willy.storage.Storage;
 import willy.task.TaskList;
@@ -22,7 +21,7 @@ import javafx.scene.image.ImageView;
 /**
  * Represents the WillyApp
  */
-class WillyApp extends Application {
+public class WillyApp extends Application {
     private TaskList taskList;
     private Storage storage;
     private Ui ui;

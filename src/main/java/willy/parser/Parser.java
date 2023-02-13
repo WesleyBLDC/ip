@@ -10,7 +10,7 @@ import willy.ui.Ui;
 public class Parser {
 
     private TaskList tList;
-    private static Ui ui;
+    private Ui ui;
     private boolean isExit;
 
     /**
@@ -34,15 +34,13 @@ public class Parser {
      * 
      * @param tList
      */
-    public static String listCommand(TaskList tList) {
+    public String listCommand(TaskList tList) {
         int taskCount = tList.getTaskCount();
         if (taskCount == 0) {
-            // return ui.emptyTaskListMessage();
+            return ui.emptyTaskListMessage();
         } else {
-            // return ui.nonEmptyTaskListMessage(taskCount,tList.toString());
-            
+            return ui.nonEmptyTaskListMessage(taskCount, tList.toString());
         }
-        return "test";
     }
 
     /**
@@ -57,6 +55,7 @@ public class Parser {
 
     /**
      * return the boolean the exit status
+     * 
      * @return the Exit status of the program
      */
     public boolean getExitStatus() {
