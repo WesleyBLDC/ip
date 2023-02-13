@@ -57,8 +57,8 @@ public class TaskList {
      * @param index
      */
     public String markTask(int index) {
-        Task t = tasks.get(index);
-        String str = t.mark();
+        Task task = tasks.get(index);
+        String str = task.mark();
         storage.save(this);
         return str;
     }
@@ -69,8 +69,8 @@ public class TaskList {
      * @param index
      */
     public String unmarkTask(int index) {
-        Task t = tasks.get(index);
-        String str = t.unmark();
+        Task task = tasks.get(index);
+        String str = task.unmark();
         storage.save(this);
         return str;
     }
