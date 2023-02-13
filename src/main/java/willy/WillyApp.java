@@ -121,7 +121,7 @@ class WillyApp extends Application {
 
         this.ui = new Ui();
         this.storage = new Storage();
-        this.taskList = new TaskList(this.storage);
+        this.taskList = new TaskList(storage);
     }
 
     /**
