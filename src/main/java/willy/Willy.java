@@ -13,9 +13,9 @@ import willy.ui.Ui;
  */
 public class Willy {
 
-    private Storage storage;
-    private TaskList tList;
-    private Ui ui;
+    public Storage storage;
+    public TaskList tList;
+    public Ui ui;
 
     public Willy() {
         this.ui = new Ui();

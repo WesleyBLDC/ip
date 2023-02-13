@@ -102,21 +102,11 @@ class WillyApp extends Application {
 
         // Part 3. Add functionality to handle user input.
         sendButton.setOnMouseClicked((event) -> {
-            try {
-                handleUserInput();
-            } catch (WillyException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            handleUserInput();
         });
 
         userInput.setOnAction((event) -> {
-            try {
-                handleUserInput();
-            } catch (WillyException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            handleUserInput();
         });
 
         this.ui = new Ui();
@@ -145,9 +135,8 @@ class WillyApp extends Application {
      * Duke's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      * 
-     * @throws WillyException
      */
-    private void handleUserInput() throws WillyException {
+    private void handleUserInput() {
         Label userText = new Label(userInput.getText());
         Label willyText = new Label(getResponse(userInput.getText()));
         dialogContainer.getChildren().addAll(
@@ -160,9 +149,8 @@ class WillyApp extends Application {
      * You should have your own function to generate a response to user input.
      * Replace this stub with your completed method.
      * 
-     * @throws WillyException
      */
-    private String getResponse(String input) throws WillyException {
+    private String getResponse(String input) {
         Parser p = new Parser(this.taskList, this.ui);
         String response = p.parseCommand(input);
         return response;

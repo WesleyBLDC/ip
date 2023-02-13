@@ -1,8 +1,6 @@
 package willy.parser;
 
 import java.util.Arrays;
-
-import willy.exception.WillyException;
 import willy.task.TaskList;
 import willy.ui.Ui;
 
@@ -79,7 +77,7 @@ public class Parser {
      * @param command
      * @throws WillyException
      */
-    public String parseCommand(String command) throws WillyException {
+    public String parseCommand(String command) {
         String[] tempBySpace = command.split(" ");
         String[] tempBySlash = command.split("/");
 
@@ -99,13 +97,13 @@ public class Parser {
         } else if (command.equals("bye")) {
             return exitCommand();
         } else if (command.equals("blah")) {
-            throw new WillyException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+            return "☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
         } else {
             if (command.contains("todo")) {
                 if (command.length() > 4) {
                     return tList.addTodo(command);
                 } else {
-                    throw new WillyException("☹ OOPS!!! The description of a todo cannot be empty.");
+                    return "☹ OOPS!!! The description of a todo cannot be empty.";
                 }
             }
             if (command.contains("deadline")) {
