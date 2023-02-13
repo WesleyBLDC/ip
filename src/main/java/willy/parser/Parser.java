@@ -86,6 +86,8 @@ public class Parser {
      * @throws WillyException
      */
     public String parseCommand(String command) throws WillyException {
+        assert command.length() != 0 : "The command cannot be empty";
+
         String[] tempBySpace = command.split(" ");
         String[] tempBySlash = command.split("/");
 
