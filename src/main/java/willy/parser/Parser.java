@@ -16,7 +16,7 @@ public class Parser {
     /**
      * Creates a parser with a specified tasklist
      * 
-     * @param tList
+     * @param tList taskList
      */
     public Parser(TaskList tList) {
         this.tList = tList;
@@ -32,7 +32,8 @@ public class Parser {
     /**
      * Displays the number of items in your task list
      * 
-     * @param tList
+     * @param tList taskList
+     * @return String
      */
     public String listCommand(TaskList tList) {
         int taskCount = tList.getTaskCount();
@@ -46,7 +47,7 @@ public class Parser {
     /**
      * get index based on the string helper function
      * 
-     * @param input
+     * @param input String input
      * @return the index of the task
      */
     public int getIndex(String input) {
@@ -64,6 +65,8 @@ public class Parser {
 
     /**
      * Runs the exit command which prints the bye msg and stops the program
+     *
+     * @return String for the parser
      */
     public String exitCommand() {
         isExit = true;
@@ -71,10 +74,50 @@ public class Parser {
     }
 
     /**
+     * Handler for todo commands
+     *
+     * @param command String
+     * @return String for the parser
+     */
+    private String handleTodo(String command) {
+        if (command.length() > 4) {
+            return tList.addTodo(command);
+        } else {
+            return ui.emptyTodoMessage();
+        }
+    }
+
+    /**
+     * Handle for deadline commands
+     * @param tempBySlash the string[]
+     * @return String for the parser
+     */
+    private String handleDeadline(String[] tempBySlash) {
+        if (tempBySlash.length > 2) {
+            String combinedString = String.join(" ",
+                    Arrays.asList(tempBySlash).subList(1, tempBySlash.length));
+            String dateString = combinedString.substring(3);
+            String[] dateArray = dateString.split(" ");
+            return tList.addDeadlineWithDate(tempBySlash[0], dateArray);
+        } else {
+            return tList.addDeadline(tempBySlash[0], tempBySlash[1]);
+        }
+    }
+
+    /**
+     * handler for the event command
+     * @param tempBySlash the string[]
+     * @return string for the parser
+     */
+    private String handleEvent(String[] tempBySlash) {
+        return tList.addEvent(tempBySlash[0], tempBySlash[1], tempBySlash[2]);
+    }
+
+    /**
      * Main parser function that takes in a command and executes the command
      * 
-     * @param command
-     * @throws WillyException
+     * @param command string command
+     * @return String for the dialog
      */
 
     public String parseCommand(String command) {
@@ -99,32 +142,21 @@ public class Parser {
         } else if (command.equals("bye")) {
             return exitCommand();
         } else if (command.equals("blah")) {
-            return "☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
+            return ui.oopsMessage();
+        } else if (command.equals("help")) {
+            return ui.helpMessage();
         } else {
             if (command.contains("todo")) {
-                if (command.length() > 4) {
-                    return tList.addTodo(command);
-                } else {
-                    return "☹ OOPS!!! The description of a todo cannot be empty.";
-                }
+                return handleTodo(command);
             }
             if (command.contains("deadline")) {
-                if (tempBySlash.length > 2) {
-                    String combinedString = String.join(" ",
-                            Arrays.asList(tempBySlash).subList(1, tempBySlash.length));
-                    String dateString = combinedString.substring(3);
-                    String[] dateArray = dateString.split(" ");
-                    return tList.addDeadlineWithDate(tempBySlash[0], dateArray);
-                } else {
-                    return tList.addDeadline(tempBySlash[0], tempBySlash[1]);
-                }
+                return handleDeadline(tempBySlash);
             }
             if (command.contains("event")) {
-                return tList.addEvent(tempBySlash[0], tempBySlash[1], tempBySlash[2]);
+                return handleEvent(tempBySlash);
             }
         }
-        String str = "I didnt understand that";
-        return str;
+        return ui.defaultReturnMessage();
     }
 
 }

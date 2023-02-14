@@ -53,7 +53,7 @@ public class Storage {
     
     /** 
      * To load the data from the storage location text file and return as a list of tasks
-     * @return List<Task>
+     * @return A list of Task objects representing the data stored in the storage location file.
      */
     public List<Task> loadData() {
         List<Task> list = new ArrayList<>();
@@ -95,7 +95,7 @@ public class Storage {
 
     /**
      * To save the current tasklist into textfile location storage
-     * @param tList
+     * @param tList tasklist
      */
     public void save(TaskList tList) {
         String tempText = "";

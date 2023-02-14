@@ -34,6 +34,8 @@ public class Task {
 
     /**
      * Marks the status as done and prints a msg
+     *
+     * @return String
      */
     public String mark() {
         isStatus = true;
@@ -43,6 +45,8 @@ public class Task {
 
     /**
      * Unmarks the status as undone and prints a msg
+     *
+     * @return String
      */
     public String unmark() {
         isStatus = false;
