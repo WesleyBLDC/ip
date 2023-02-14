@@ -55,6 +55,8 @@ public class TaskList {
      * Marks the task at the index as done
      * 
      * @param index
+     *
+     * @return string for the parser
      */
     public String markTask(int index) {
         Task task = tasks.get(index);
@@ -67,6 +69,7 @@ public class TaskList {
      * Unmarks the task at the index as undone
      * 
      * @param index
+     * @return string for the parser
      */
     public String unmarkTask(int index) {
         Task task = tasks.get(index);
@@ -79,6 +82,7 @@ public class TaskList {
      * delete task
      * 
      * @param index
+     * @return string for the parser
      */
     public String deleteTask(int index) {
         tasks.remove(index);
@@ -90,6 +94,7 @@ public class TaskList {
      * Command to add a todo to the tasklist
      * 
      * @param details
+     * @return string for the parser
      */
     public String addTodo(String details) {
         Todo entry = new Todo(details);
@@ -104,6 +109,7 @@ public class TaskList {
      * 
      * @param details
      * @param date
+     * @return string for the parser
      */
     public String addDeadline(String details, String date) {
         Deadline entry = new Deadline(details, date);
@@ -118,6 +124,7 @@ public class TaskList {
      * 
      * @param details
      * @param dateArray
+     * @return string for the parser
      */
     public String addDeadlineWithDate(String details, String[] dateArray) {
         Deadline entry = new Deadline(details, dateArray);
@@ -133,6 +140,7 @@ public class TaskList {
      * @param details
      * @param dateFrom
      * @param dateTo
+     * @return string for the parser
      */
     public String addEvent(String details, String dateFrom, String dateTo) {
         Event entry = new Event(details, dateFrom, dateTo);
@@ -146,6 +154,7 @@ public class TaskList {
      * print all tasks in a list of strings that contains the keyword
      * 
      * @param keyword
+     * @return string for the parser
      */
     public String findTasks(String keyword) {
         String str = "Here are the matching tasks in your list\n";
@@ -171,6 +180,8 @@ public class TaskList {
 
     /**
      * Converts the tasklist into a combined string representation (need to check)
+     *
+     * @return string for the parser
      */
     @Override
     public String toString() {
