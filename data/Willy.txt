@@ -7,3 +7,6 @@
 [T][ ]todo help me
 [T][ ]todo helllp
 [T][ ]todo had
+[T][ ]todo hello testing
+[T][ ]todo do cs2103t assignment
+[D][ ]deadline return book (by 2019-10-15)
