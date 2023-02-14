@@ -1,8 +1,6 @@
 package willy.parser;
 
 import java.util.Arrays;
-
-import willy.exception.WillyException;
 import willy.task.TaskList;
 import willy.ui.Ui;
 
@@ -36,18 +34,12 @@ public class Parser {
      * 
      * @param tList
      */
-    public static String listCommand(TaskList tList) {
+    public String listCommand(TaskList tList) {
         int taskCount = tList.getTaskCount();
-        String str = "";
         if (taskCount == 0) {
-            // System.out.println("You have 0 tasks in your list");
-            str = "You have 0 tasks in your list";
-            return str;
+            return ui.emptyTaskListMessage();
         } else {
-            // System.out.format("You have %d tasks in your list \n", taskCount);
-            // System.out.println(tList.toString());
-            str = String.format("You have %d tasks in your list \n%s", taskCount, tList.toString());
-            return str;
+            return ui.nonEmptyTaskListMessage(taskCount, tList.toString());
         }
     }
 
@@ -63,6 +55,7 @@ public class Parser {
 
     /**
      * return the boolean the exit status
+     * 
      * @return the Exit status of the program
      */
     public boolean getExitStatus() {
@@ -73,10 +66,8 @@ public class Parser {
      * Runs the exit command which prints the bye msg and stops the program
      */
     public String exitCommand() {
-        // System.out.println("Bye. Hope to see you again soon!");
-        String str = "Bye. Hope to see you again soon!";
         isExit = true;
-        return str;
+        return ui.exitMessage();
     }
 
     /**
@@ -85,7 +76,8 @@ public class Parser {
      * @param command
      * @throws WillyException
      */
-    public String parseCommand(String command) throws WillyException {
+
+    public String parseCommand(String command) {
         assert command.length() != 0 : "The command cannot be empty";
 
         String[] tempBySpace = command.split(" ");
@@ -107,13 +99,13 @@ public class Parser {
         } else if (command.equals("bye")) {
             return exitCommand();
         } else if (command.equals("blah")) {
-            throw new WillyException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+            return "☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
         } else {
             if (command.contains("todo")) {
                 if (command.length() > 4) {
                     return tList.addTodo(command);
                 } else {
-                    throw new WillyException("☹ OOPS!!! The description of a todo cannot be empty.");
+                    return "☹ OOPS!!! The description of a todo cannot be empty.";
                 }
             }
             if (command.contains("deadline")) {

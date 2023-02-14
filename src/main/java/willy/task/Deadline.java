@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
  * Represents the Deadline
  */
 public class Deadline extends Task {
-    private String by;
+    private String endDateString;
     private String code;
     private LocalDate date;
     private LocalTime time;
@@ -16,11 +16,11 @@ public class Deadline extends Task {
     /**
      * Creates a deadline with a msg and by date
      * @param msg
-     * @param by
+     * @param endDateString
      */
-    public Deadline(String msg, String by) {
+    public Deadline(String msg, String endDateString) {
         super(msg);
-        this.by = by;
+        this.endDateString = endDateString;
         this.code = "[D]";
     }
 
@@ -72,7 +72,7 @@ public class Deadline extends Task {
         if (date != null && time != null) {
             return code + super.toString() + "(due on " + date + " at " + time + ")";
         } else {
-            return code + super.toString() + "(" + by + ")";
+            return code + super.toString() + "(" + endDateString + ")";
         }
     }
 

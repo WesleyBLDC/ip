@@ -1,28 +1,27 @@
 package willy;
 
 import javafx.application.Application;
-import willy.exception.WillyException;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.text.Font;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import willy.parser.Parser;
 import willy.storage.Storage;
 import willy.task.TaskList;
 import willy.ui.Ui;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Region;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 /**
  * Represents the WillyApp
  */
-class WillyApp extends Application {
+public class WillyApp extends Application {
     private TaskList taskList;
     private Storage storage;
     private Ui ui;
@@ -102,26 +101,16 @@ class WillyApp extends Application {
 
         // Part 3. Add functionality to handle user input.
         sendButton.setOnMouseClicked((event) -> {
-            try {
-                handleUserInput();
-            } catch (WillyException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            handleUserInput();
         });
 
         userInput.setOnAction((event) -> {
-            try {
-                handleUserInput();
-            } catch (WillyException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            handleUserInput();
         });
 
         this.ui = new Ui();
         this.storage = new Storage();
-        this.taskList = new TaskList(this.storage);
+        this.taskList = new TaskList(storage);
     }
 
     /**
@@ -145,9 +134,8 @@ class WillyApp extends Application {
      * Duke's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      * 
-     * @throws WillyException
      */
-    private void handleUserInput() throws WillyException {
+    private void handleUserInput() {
         Label userText = new Label(userInput.getText());
         Label willyText = new Label(getResponse(userInput.getText()));
         dialogContainer.getChildren().addAll(
@@ -160,13 +148,10 @@ class WillyApp extends Application {
      * You should have your own function to generate a response to user input.
      * Replace this stub with your completed method.
      * 
-     * @throws WillyException
      */
-    private String getResponse(String input) throws WillyException {
+    private String getResponse(String input) {
         Parser p = new Parser(this.taskList, this.ui);
         String response = p.parseCommand(input);
         return response;
-
-        // command.execute(taskList, storage, ui);
     }
 }

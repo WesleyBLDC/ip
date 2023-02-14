@@ -5,7 +5,7 @@ package willy.task;
  */
 public class Task {
     private String msg;
-    private Boolean status;
+    private Boolean isStatus;
 
     /**
      * Creates a task with a msg
@@ -13,7 +13,7 @@ public class Task {
      */
     public Task(String msg) {
         this.msg = msg;
-        this.status = false;
+        this.isStatus = false;
     }
 
     /**
@@ -21,7 +21,7 @@ public class Task {
      * @return String
      */
     public String getStatusIcon() {
-        return (status ? "[X]" : "[ ]");
+        return (isStatus ? "[X]" : "[ ]");
     }
 
     /**
@@ -36,8 +36,7 @@ public class Task {
      * Marks the status as done and prints a msg
      */
     public String mark() {
-        status = true;
-        // System.out.println("Nice! I've marked this task as done:\n" + getStatusIcon() + msg);
+        isStatus = true;
         String str = "Nice! I've marked this task as done:\n" + getStatusIcon() + msg;
         return str;
     }
@@ -46,8 +45,7 @@ public class Task {
      * Unmarks the status as undone and prints a msg
      */
     public String unmark() {
-        status = false;
-        // System.out.println("OK, I've unmarked this task:\n" + getStatusIcon() + msg);
+        isStatus = false;
         String str = "OK, I've unmarked this task:\n" + getStatusIcon() + msg;
         return str;
     }

@@ -13,12 +13,19 @@ import willy.ui.Ui;
  */
 public class Willy {
 
-    private Storage storage;
-    private TaskList tList;
-    private Ui ui;
+    public Storage storage;
+    public TaskList tList;
+    public Ui ui;
+
+    public Willy() {
+        this.ui = new Ui();
+        this.storage = new Storage();
+        this.tList = new TaskList(this.storage); // load data done in storage class
+    }
 
     /**
      * Creates a Willy class with a specified storage location to init/read from
+     * 
      * @param filePath
      */
     public Willy(String filePath) {
@@ -29,6 +36,7 @@ public class Willy {
 
     /**
      * Run command to init parser and scan for next command
+     * 
      * @throws IOException
      * @throws WillyException
      */
@@ -46,6 +54,7 @@ public class Willy {
 
     /**
      * Main function loop to start the application
+     * 
      * @param args
      * @throws IOException
      * @throws WillyException
