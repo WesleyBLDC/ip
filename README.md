@@ -1,50 +1,124 @@
-# willy Bot - How to use?
+# User Guide
 
-For the willy Bot, we can take and save 3 different types of task
+Willy is a **desktop app for managing your tasks via a Command Line Interface** (CLI)
+that makes it fast to add tasks while still having the benefits of a Graphical User Interface (GUI).
 
-Please enter commands into the terminal in the following format.
+## How to use
 
-Task Type Name, Example 
-
-todo -> todo borrow book
-Note: "todo" keyword must be infront.
-
-deadline -> deadline return book /by Sunday
-Note: "deadline" keyword must be infront and the date must come after the first instance of "/"
-
-event -> event project meeting /from Mon 2pm /to 4pm
-Note: "event" keyword must be infront. the from and to must be in said order and come after the first and second instance of "/" in order accordingly.
-
-# Additional commands
-
-mark %d: It will mark the task in the index of the list as done
-unmark %d: It will mark the task in the index of the list as undone
-delete %d: It will delete the task in the said position in the list
-list: to generate the list of Tasks
-bye: to close the program
+Type the commands in the chatbox and press `Send` or press the `Enter` key to execute it. Some example commands you can try:
+- `list`: List all tasks.
+- `todo groceries`: Adds a todo task with `groceries` as its description to the task list.
+- `mark 1`: Marks the 1st task as done.
+- `delete 1`: Deletes the 1st task.
+- `bye`: Exits the app.
 
 
-# Duke project template
+Refer to the [Features](##Features) below for details of each command.
+## Features
+<br />
+<br />
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+### Listing all tasks: list
+Shows a list of all tasks in your list.<br />
+Format: `list`
+<br />
+<br />
 
-## Setting up in Intellij
+### Adding a todo: `todo`
+Adds a todo task to the task list.<br />
+Format: `todo [task]`<br /><br />
+Examples:
+- `todo math homwework`
+- `todo do assignments`
+<br />
+<br />
 
-Prerequisites: JDK 11, update Intellij to the most recent version.
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 11** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-3. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+### Adding a deadline: `deadline`
+Adds a deadline type to the task list.<br />
+Format: `deadline [task] /by [YYYY-MM-DD]`<br /><br />
+Examples:
+- `deadline come home /by 2019-10-15`
+- `deadline project work /by 2019-10-30`
+<br />
+<br />
+
+
+### Adding an event: `event`
+Adds an event to the task list.<br />
+Format: `event [task] /from [YYYY-MM-DD] /to [YYYY-MM-DD]`<br /><br />
+Examples:
+- `event date night /from 2018-03-10 /to 2018-03-11`
+- `event house event /from 2018-05-23 /to 2018-05-26`
+<br />
+<br />
+
+### Marking a task: `mark`
+Marks an existing task as done.<br /> 
+Format: `mark [task number]`<br />
+- Marks the task as done
+- The `task number` refers to the index number shown in the displayed task list.
+- The index must be a positive integer starting from 1.<br /><br /> 
+Examples:
+- `mark 1`
+- `mark 3`
+<br />
+<br />
+
+### Un-marking a task: `unmark`
+Un-marks an existing task as not done.<br />
+Format: `unmark [task number]`<br />
+- Un-marks the task
+- The `task number` refers to the index number shown in the displayed task list.
+- The index must be a positive integer starting from 1.<br /><br />
+Examples:
+- `unmark 1`
+- `unmark 3`
+<br />
+<br />
+
+### Locating a task: `find`
+Find tasks whose description or date contain the given keyword.<br />
+Format: `find [keyword]`<br />
+- The search is case-sensitive.<br /><br />
+Examples:
+- `find assignment` returns `[T][X]todo math assignment`
+- `find 10 Mar` returns `[D][ ]deadline return screwdriver (by: 10 Mar 2019)`
+<br />
+<br />
+
+
+### Deleting a task: `delete`
+Deletes the task at the specified task number from the task list.<br />
+Format: `delete [task number]`<br />
+- Deletes the task
+- The `task number` refers to the index number shown in the displayed task list.
+- The index must be a positive integer starting from 1.<br /><br />
+Examples:
+- `delete 1`
+- `delete 2`
+<br />
+<br />
+
+### Deleting a task: `help`
+Displays the help screen with all the commands available<br />
+Format: `help`<br />
+- Displays all the commands
+Examples:
+- `help`
+<br />
+<br />
+
+### Exiting the program: `bye`
+Exits the program.<br />
+Format: `bye`
+<br />
+<br />
+
+
+### Saving the data
+Willy data are saved in the hard disk automatically in your local directory where your Willy.jar is saved in after any command that changes the data. 
+You do not need to save the data manually.
+<br />
+<br />
+***

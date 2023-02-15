@@ -1,7 +1,7 @@
 # User Guide
 
-Willy is a **desktop app for managing your tasks via a Command Line Interface** (CLI) 
-while still having the benefits of a Graphical User Interface (GUI).
+Willy is a **desktop app for managing your tasks via a Command Line Interface** (CLI)
+that makes it fast to add tasks while still having the benefits of a Graphical User Interface (GUI).
 
 ## How to use
 
@@ -14,11 +14,10 @@ Type the commands in the chatbox and press `Send` or press the `Enter` key to ex
 
 
 Refer to the [Features](##Features) below for details of each command.
-<br />
-<br />
 ## Features
 <br />
 <br />
+
 ### Listing all tasks: list
 Shows a list of all tasks in your list.<br />
 Format: `list`
@@ -118,7 +117,7 @@ Format: `bye`
 
 
 ### Saving the data
-Willy data are saved in the hard disk automatically after any command that changes the data. 
+Willy data are saved in the hard disk automatically in your local directory where your Willy.jar is saved in after any command that changes the data. 
 You do not need to save the data manually.
 <br />
 <br />
