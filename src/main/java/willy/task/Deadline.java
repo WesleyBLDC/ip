@@ -15,8 +15,8 @@ public class Deadline extends Task {
 
     /**
      * Creates a deadline with a msg and by date
-     * @param msg
-     * @param endDateString
+     * @param msg main details of the taks
+     * @param endDateString the date part of the task
      */
     public Deadline(String msg, String endDateString) {
         super(msg);
@@ -26,8 +26,8 @@ public class Deadline extends Task {
 
     /**
      * Creates a Deadline with a msg and a LocalDate/LocalTime arg
-     * @param msg
-     * @param dateArr
+     * @param msg contains the main details of the task
+     * @param dateArr contains the arrayholding the date details
      */
     public Deadline(String msg, String[] dateArr) {
         super(msg);

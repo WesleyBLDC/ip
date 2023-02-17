@@ -1,12 +1,3 @@
-[T][ ]todo test
-[T][ ]todo hello
-[T][ ]todo 
-[T][ ]todo help help
-[T][ ]todo add this
-[T][ ]todo 12e3123
-[T][ ]todo help me
-[T][ ]todo helllp
-[T][ ]todo had
-[T][ ]todo hello testing
-[T][ ]todo do cs2103t assignment
-[D][ ]deadline return book (by 2019-10-15)
+[T][X]testing this app
+[D][X](by today)
+[D][X]help do this(by today)

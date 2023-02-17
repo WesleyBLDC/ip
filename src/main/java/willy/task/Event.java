@@ -10,9 +10,9 @@ public class Event extends Task {
 
     /**
      * Creates the Event
-     * @param msg
-     * @param from
-     * @param to
+     * @param msg contains the msg of the event
+     * @param from the from part
+     * @param to the to part of the string
      */
     public Event(String msg, String from, String to) {
         super(msg);

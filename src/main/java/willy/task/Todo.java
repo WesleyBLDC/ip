@@ -8,7 +8,7 @@ public class Todo extends Task {
 
     /**
      * Creates a todo with a string msg
-     * @param msg
+     * @param msg holds the string message
      */
     public Todo(String msg) {
         super(msg);

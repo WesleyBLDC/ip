@@ -9,12 +9,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
-
+/**
+ * Represents the DialogBox
+ */
 public class DialogBox extends HBox {
 
     private Label text;
     private ImageView displayPicture;
 
+    /**
+     * Creates the dialog box
+     * @param l label
+     * @param iv imageview
+     */
     public DialogBox(Label l, ImageView iv) {
         text = l;
         displayPicture = iv;

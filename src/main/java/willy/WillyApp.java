@@ -33,6 +33,9 @@ public class WillyApp extends Application {
     private Image user = new Image(this.getClass().getResourceAsStream("/images/daBatman.png"));
     private Image willy = new Image(this.getClass().getResourceAsStream("/images/daWilly.png"));
 
+    /**
+     * The main command to start the GUI
+     */
     @Override
     public void start(Stage stage) {
 

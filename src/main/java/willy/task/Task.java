@@ -1,5 +1,7 @@
 package willy.task;
 
+import java.util.Arrays;
+
 /**
  * Represents a Task
  */
@@ -9,10 +11,10 @@ public class Task {
 
     /**
      * Creates a task with a msg
-     * @param msg
+     * @param msg contains the main msg of the task
      */
     public Task(String msg) {
-        this.msg = msg;
+        this.msg = getSecondWordOnwards(msg);
         this.isStatus = false;
     }
 
@@ -54,11 +56,22 @@ public class Task {
         return str;
     }
 
+    public static String getSecondWordOnwards(String str) {
+        String[] words = str.split("\\s+");
+        if (words.length < 2) {
+            return ""; // there are less than two words in the string
+        } else {
+            return String.join(" ", Arrays.copyOfRange(words, 1, words.length));
+        }
+    }
+
     /**
      * Returns the string representation of the task
      */
     @Override
     public String toString() {
+//        return this.getStatusIcon() + getSecondWordOnwards(msg);
         return this.getStatusIcon() + msg;
+//        return this.getStatusIcon();
     }
 }

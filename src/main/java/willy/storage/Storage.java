@@ -38,7 +38,7 @@ public class Storage {
 
     /**
      * Creats a custom storage based on the param file location
-     * @param filePathGiven
+     * @param filePathGiven the custom file path
      */
     public Storage(String filePathGiven) {
         // double check later

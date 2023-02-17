@@ -26,7 +26,7 @@ public class Willy {
     /**
      * Creates a Willy class with a specified storage location to init/read from
      * 
-     * @param filePath
+     * @param filePath Filepath for custom constructor
      */
     public Willy(String filePath) {
         this.ui = new Ui();
@@ -37,8 +37,8 @@ public class Willy {
     /**
      * Run command to init parser and scan for next command
      * 
-     * @throws IOException
-     * @throws WillyException
+     * @throws IOException Exception handling
+     * @throws WillyException Exception handling
      */
     public void run() throws IOException, WillyException {
         ui.showStartupMessage();
@@ -55,9 +55,9 @@ public class Willy {
     /**
      * Main function loop to start the application
      * 
-     * @param args
-     * @throws IOException
-     * @throws WillyException
+     * @param args args
+     * @throws IOException ioexception handling
+     * @throws WillyException willyexception handling
      */
     public static void main(String[] args) throws IOException, WillyException {
         new Willy("data/Willy.txt").run();

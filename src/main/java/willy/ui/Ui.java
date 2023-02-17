@@ -11,13 +11,32 @@ import java.nio.file.Paths;
  */
 public class Ui {
 
+    private final String HELP_MESSAGE = "*Help Screen*\n\n" +
+            "Please enter commands into the terminal in the following format.\n\n" +
+            ">Main task creation commands\n" +
+            "Task Type, Details in the following format\n\n" +
+            "todo -> todo borrow book\n" +
+            "Note: \"todo\" keyword must be infront.\n\n" +
+            "deadline -> deadline return book /by Sunday\n" +
+            "Note: \"deadline\" keyword must be infront and the date must come after the first instance of \"/\"\n\n" +
+            "event -> event project meeting /from Mon 2pm /to 4pm\n" +
+            "Note: \"event\" keyword must be infront. the from and to must be in said order and come after the first and second instance of \"/\" in order accordingly.\n\n" +
+            ">Additional task commands\n\n" +
+            "mark %d: It will mark the task in the index of the list as done\n" +
+            "unmark %d: It will mark the task in the index of the list as undone\n" +
+            "delete %d: It will delete the task in the said position in the list\n" +
+            "find: to find keywords from the list of Tasks\n" +
+            "list: to generate the list of Tasks\n" +
+            "bye: to close the program\n" +
+            "help: to call the help screen\n";
+
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private static final String HELP_DATA_PATH = "data/help.txt";
+    
     /**
      * To get and return the string collected by the BufferedReader
      * 
      * @return String
-     * @throws IOException
+     * @throws IOException Exception handling
      */
     public String getCommand() throws IOException {
         String str = br.readLine();
@@ -34,7 +53,7 @@ public class Ui {
     /**
      * Prints out the error msg
      * 
-     * @param e
+     * @param e  Error handling
      */
     public void showError(String e) {
         System.out.println(e);
@@ -68,6 +87,8 @@ public class Ui {
     /**
      * Prints out non empty task list msg
      *
+     * @param taskCount number tasks
+     * @param taskListMessage the tasklist message
      * @return string for the parser
      */
     public String nonEmptyTaskListMessage(int taskCount, String taskListMessage) {
@@ -107,11 +128,6 @@ public class Ui {
      * @return string for the parser
      */
     public String helpMessage() {
-        try {
-            byte[] bytes = Files.readAllBytes(Paths.get(HELP_DATA_PATH));
-            return new String(bytes);
-        } catch (IOException e) {
-            return "Failed to read file: " + e.getMessage();
-        }
+        return HELP_MESSAGE;
     }
 }

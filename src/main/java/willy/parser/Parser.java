@@ -70,6 +70,7 @@ public class Parser {
      */
     public String exitCommand() {
         isExit = true;
+        System.exit(0);
         return ui.exitMessage();
     }
 
@@ -80,19 +81,23 @@ public class Parser {
      * @return String for the parser
      */
     private String handleTodo(String command) {
+
         if (command.length() > 4) {
             return tList.addTodo(command);
         } else {
             return ui.emptyTodoMessage();
         }
+
     }
 
     /**
      * Handle for deadline commands
+     * 
      * @param tempBySlash the string[]
      * @return String for the parser
      */
     private String handleDeadline(String[] tempBySlash) {
+
         if (tempBySlash.length > 2) {
             String combinedString = String.join(" ",
                     Arrays.asList(tempBySlash).subList(1, tempBySlash.length));
@@ -102,15 +107,19 @@ public class Parser {
         } else {
             return tList.addDeadline(tempBySlash[0], tempBySlash[1]);
         }
+
     }
 
     /**
      * handler for the event command
+     * 
      * @param tempBySlash the string[]
      * @return string for the parser
      */
     private String handleEvent(String[] tempBySlash) {
+
         return tList.addEvent(tempBySlash[0], tempBySlash[1], tempBySlash[2]);
+
     }
 
     /**
@@ -126,37 +135,42 @@ public class Parser {
         String[] tempBySpace = command.split(" ");
         String[] tempBySlash = command.split("/");
 
-        if (tempBySpace[0].equals("mark")) {
-            int index = getIndex(tempBySpace[1]);
-            return tList.markTask(index);
-        } else if (tempBySpace[0].equals("unmark")) {
-            int index = getIndex(tempBySpace[1]);
-            return tList.unmarkTask(index);
-        } else if (tempBySpace[0].equals("find")) {
-            return tList.findTasks(tempBySpace[1]);
-        } else if (command.contains("delete")) {
-            int index = getIndex(tempBySpace[1]);
-            return tList.deleteTask(index);
-        } else if (command.equals("list")) {
-            return listCommand(tList);
-        } else if (command.equals("bye")) {
-            return exitCommand();
-        } else if (command.equals("blah")) {
-            return ui.oopsMessage();
-        } else if (command.equals("help")) {
-            return ui.helpMessage();
-        } else {
-            if (command.contains("todo")) {
-                return handleTodo(command);
+        try {
+            if (tempBySpace[0].equals("mark")) {
+                int index = getIndex(tempBySpace[1]);
+                return tList.markTask(index);
+            } else if (tempBySpace[0].equals("unmark")) {
+                int index = getIndex(tempBySpace[1]);
+                return tList.unmarkTask(index);
+            } else if (tempBySpace[0].equals("find")) {
+                return tList.findTasks(tempBySpace[1]);
+            } else if (command.contains("delete")) {
+                int index = getIndex(tempBySpace[1]);
+                return tList.deleteTask(index);
+            } else if (command.equals("list")) {
+                return listCommand(tList);
+            } else if (command.equals("bye")) {
+                return exitCommand();
+            } else if (command.equals("blah")) {
+                return ui.oopsMessage();
+            } else if (command.equals("help")) {
+                return ui.helpMessage();
+            } else {
+                if (command.contains("todo")) {
+                    return handleTodo(command);
+                }
+                if (command.contains("deadline")) {
+                    return handleDeadline(tempBySlash);
+                }
+                if (command.contains("event")) {
+                    return handleEvent(tempBySlash);
+                }
             }
-            if (command.contains("deadline")) {
-                return handleDeadline(tempBySlash);
-            }
-            if (command.contains("event")) {
-                return handleEvent(tempBySlash);
-            }
+            return ui.defaultReturnMessage();
+        } catch (Exception e) {
+            return "Wrong format or doesn't exist, please try again. Type 'help' to get help";
         }
-        return ui.defaultReturnMessage();
+
     }
 
 }
